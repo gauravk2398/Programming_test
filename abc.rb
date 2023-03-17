@@ -7,4 +7,4 @@ puts 'last name'
 lastName=gets.chomp
 puts 'hello Mr.' + first_name +' '+ middle_Name +' ' + lastName + " ! hope you are having great time."
 len=first_name.length+ middle_Name.length+ lastName.length
-puts 'did you know that your name have ' + len.to_s + ' number of characters.' 
+puts 'did you know that your name have ' + len.to_s + ' number of characters.' 	
