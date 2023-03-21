@@ -12,6 +12,7 @@ puts 24*3600*365*24
 puts "hello's how are you"+' I am fine.'
 
 puts "hi"*4
+print "hi"       #diff. between print and puts is that print stays in the same line and puts moves to the next line.
 
 name='Gaurav'
 
@@ -22,6 +23,14 @@ math=gets
 method= gets.chomp         #chomp is used to remove the space made by the "enter" key. 
 puts '2 '+method + ' 3'
 puts '2 '+ math + ' 3'
+
+
+#CONVERSIONS
+to_a  #To Array
+to_i  #To Integer
+to_s  #To String
+
+
 
 
 #ANGRY BOSS PROBLEM
@@ -109,6 +118,36 @@ puts letters
 
 
 
+
+#STRING MANIPULATION
+da_man = 'Mr. T'
+big_T
+= da_man[4]   		#String can be used as array only.
+puts big_T
+puts ?T 			#"?" is used for checking.	basically for comparisons
+puts 84.chr			#this method is used for finding char at given index.
+
+
+#Another
+puts 'Enter your name'
+getName=gets.chomp
+if(getName[0]==?c)       #or you can directly write getName[0]=='c'. 
+    puts "hello #{getName},how are you"
+else
+    puts "you are not authorized"
+end
+
+#SUBSTRING of the String.
+puts getName[1,3]       
+puts getName[1,4]       #1-starting index,4- Numbers of characters to be taken(including last one as well).
+puts getName[1..5]		#it includes the last index as well.(print all the numbers in the range)
+
+#NOTE:INDEXING FROM BACKSIDE OF THE STRING STARTES FROM -1 AND PROCEDES FURTHER.
+puts getName[-3..-1] 
+
+
+
+
 #LEAP YEAR
 
 puts 'starts:'
@@ -159,6 +198,24 @@ name=[10,5,2,15,18,3,4]
  puts name.join(',')	#joins the elements of the array depending on the parameter passed to it.
 
 
+ #String manipulation ques
+list= 'abgownsdlkwefcwf'
+lists=list.split("").sort
+puts lists
+
+
+#String to Array and sorting them.
+list= 'abgownsdlk'
+listArr=[]
+listArr.push(list.split("").sort)
+puts listArr.join
+
+#Using a variable in Double quotes.
+name= "Gaurav"
+puts "hello #{name}"  			#This can only be done in double quotes only.Single quotes change it to normal statement.
+
+
+
 
  #DEFINE NEW METHOD
  def  say_Heloo			#defining the method. 
@@ -176,6 +233,17 @@ name=[10,5,2,15,18,3,4]
 	
 end
 say_Hi 2,5
+
+#Giving Array input and Sorting Array using inbluit method.
+arr=[3,9,5,1,8]
+def willsort arr
+    arr.sort.join(",")
+end
+
+puts willsort(arr)
+
+
+
 
 
 							#RECURSION
@@ -229,5 +297,149 @@ def count_islands world,x,y
 
 end
 puts  count_islands(world,5,5)
- 
 
+
+
+#TIME CLASS
+time=Time.new
+puts time
+
+
+#HASH CLASS
+new_Hash=Hash.new		#it is used to store key,value pairs.
+
+#Example of Hash class
+dict_array = []			    # array literal; same as Array.new
+dict_hash ={}				# hash literal;
+dict_array[0] = 'candle'
+dict_array[1] = 'glasses'
+dict_array[2] = 'truck'
+dict_array[3] = 'Alicia'
+dict_hash[' shia-a'] = 'candle'
+dict_hash[' shaya' ] = 'glasses'
+dict_hash[' shasha'] = 'truck'
+dict_hash[' shasha'] = 'Alicia'
+dict_array.each do |word|
+puts word
+end
+dict_hash.each do |c_word, word|
+puts "#{c_word}:#{word}"
+end
+
+
+#RANGE CLASS
+allowed= 'A'..'S'             #This is how we define range.
+
+
+#NOTE: IF WE USE 3 DOTS INSTEAD OF TWO DOTS, THEN IT EXCLUDES THE LAST ELEMENT OF THE RANGE.
+
+#Example
+name= 'B'
+range='A'..'C'
+if range.include?(name)
+    puts "working fine"
+else
+    puts "working but not in the range"
+end
+
+
+#One full example with few more methods
+#This is your range literal.
+letters = 'a'..'c'
+#Convert range to array.
+puts(['a','b','c'] == letters.to_a)
+#Iterate over a range:
+('A'..'Z').each do |letter|
+print letter
+end
+puts
+god_bless_the_70s = 1970..1979
+puts god_bless_the_70s.min
+puts god_bless_the_70s.max
+puts(god_bless_the_70s.include?(1979 ))
+puts(god_bless_the_70s.include?(1980 ))
+puts(god_bless_the_70s.include?(1974.5))
+
+
+
+#HOPING IN INTEGER CLASS
+class Integer
+def to_eng
+    if self == 5            # "self" is used to call the object on which the method is called on. 
+        english = 'five'
+    else
+        english = 'forty-two'
+    end
+    english
+end
+end
+puts 5.to_eng
+puts 42.to_eng
+puts 7.to_eng
+
+
+#CREATING THE CLASS and making it's object.
+class Check
+    def f_pro sel
+        if(sel == 5)
+            puts 'yes,things are fine.'
+        else
+            puts 'still working fine.'
+        end
+    end
+end
+
+you=Check.new
+ans=you.f_pro(5)
+
+
+
+#INSTANCE VARIABLE=- variables which are object variables(and not method variables) and lasts till the object exists. 
+class Die										#They are created using "@" sign in front of them.
+	def roll
+		@number_showing = 1 + rand(6)			#"@number_showing" is the instance variable.
+	end
+	def showing
+		@number_showing
+	end
+end
+die = Die.new
+die.roll
+puts die.showing
+
+
+
+
+#INITIALIZE---almost lke constructor in java. As soon as object is created, it automatically gets called.
+class Die
+	def initialize					#CONSTRUCTOR.
+		roll
+	end
+	def roll
+		@number_showing = 1 + rand(6)
+	end
+	def showing
+		@number_showing
+	end
+end
+puts Die.new.showing
+
+
+#BLOCKS AND PROCS
+#BLOCK-- take a block of code between "do" and "end"
+#PROC--  wrap the block of code with the object. This object is known as "PROC".
+
+#Sytnax
+toast = Proc.new do 		#Initialization of Procs
+puts 'Cheers!' 				#DO-END is the block 
+end
+toast.call					#calling a PROC using a call method.
+toast.call
+toast.call
+
+
+#PARAMETERIZED BLOCKS
+name=Proc.new do |yourName|
+    puts " hey #{yourName}, how are you."
+end
+name.call 'Gaurav'
